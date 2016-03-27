@@ -18,11 +18,12 @@ $ cd crawlers
 Run a specific crawler
 $ scrapy crawl {{ crawler name }} -s {{ settings }}
 For example:
-$ scrapy crawl coles -s CLOSESPIDER_PAGECOUNT=5 
+$ scrapy crawl coles -s CLOSESPIDER_PAGECOUNT=5
 ```
 
 ### Deployment:
 
+Currently I host it on [Scrapinghub](scrapinghub.com)
 ```bash
 $ cd crawlers && shub deploy
 ```
