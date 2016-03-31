@@ -1,4 +1,5 @@
 crapy==1.0.5
+kombu==3.0.35
+msgpack-python==0.4.7
 scrapyd==1.1.0
 shub==2.0.2
-

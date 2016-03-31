@@ -37,5 +37,5 @@ class ColesSpider(CrawlSpider):
         i.add_xpath('image_url', image_url)
 
         i.add_value('url', response.url)
-        i.add_value('date', date.today())
+        i.add_value('date', date.today().isoformat())
         return i.load_item()
