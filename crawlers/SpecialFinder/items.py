@@ -8,3 +8,4 @@ class ColesItem(Item):
     url = Field()
     image_url = Field()
     date = Field()
+    vendor = Field()

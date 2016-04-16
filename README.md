@@ -1,4 +1,4 @@
-# SpecialFinder
+# SpecialFinderCrawler
 A crawler helps me find the specials from a variety of sites those I am interested in.  
 **Note: Incomplete. Still in development**
 

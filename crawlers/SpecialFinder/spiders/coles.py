@@ -25,6 +25,7 @@ class ColesSpider(CrawlSpider):
     )
 
     def parse_item(self, response):
+        # FIXME: fix array issue
         i = ItemLoader(item=ColesItem(), response=response)
         title = r'//div[@id="product-details-container"]//h1/text()'
         price = r'//div[@id="product-details-container"]//span[@class="price"]/text()'
@@ -38,4 +39,5 @@ class ColesSpider(CrawlSpider):
 
         i.add_value('url', response.url)
         i.add_value('date', date.today().isoformat())
+        i.add_value('vendor', 'coles')
         return i.load_item()
