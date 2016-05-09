@@ -1,7 +1,7 @@
 from scrapy import Field, Item
 import scrapy
 
-class ColesItem(Item):
+class SalefinderItem(Item):
     title = Field()
     price = Field()
     per = Field()  # Per kg, each
