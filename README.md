@@ -1,6 +1,9 @@
 # SpecialFinderCrawler
 A crawler helps me find the specials from a variety of sites those I am interested in.  
-**Note: Incomplete. Still in development**
+
+## Architecture
+
+![architecture](specialfindercrawler.png)
 
 ### Techincal stack:
 [Scrapy](http://scrapy.org/)
