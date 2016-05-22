@@ -1,5 +1,5 @@
 # SpecialFinderCrawler
-A crawler helps me find the specials from a variety of sites those I am interested in.  
+A crawler scraps sites I am interested in and puts results into a RabbitMQ queue for [SpecialFinderMiner](https://github.com/janusle/SpecialFinderMiner) to analyse.
 
 ## Architecture
 
