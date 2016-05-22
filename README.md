@@ -1,6 +1,9 @@
 # SpecialFinderCrawler
-A crawler helps me find the specials from a variety of sites those I am interested in.  
-**Note: Incomplete. Still in development**
+A crawler scraps sites I am interested in and puts results into a RabbitMQ queue for [SpecialFinderMiner](https://github.com/janusle/SpecialFinderMiner) to analyse.
+
+## Architecture
+
+![architecture](specialfindercrawler.png)
 
 ### Techincal stack:
 [Scrapy](http://scrapy.org/)
