@@ -6,13 +6,14 @@ from scrapy.loader import ItemLoader
 from scrapy.loader.processors import MapCompose
 from datetime import date
 
-from SpecialFinder.items import ColesItem
+from SpecialFinder.items import SalefinderItem
 
 
-class ColesSpider(CrawlSpider):
-    name = 'coles'
+class SaleFinderSpider(CrawlSpider):
+    name = 'salefinder'
     allowed_domains = ['salefinder.com.au']
-    start_urls = ['http://www.salefinder.com.au/coles-catalogue/']
+    start_urls = ['http://salefinder.com.au/coles-catalogue/',
+                  'http://salefinder.com.au/Woolworths-catalogue/']
     next_page_xpath =\
         r"//div[@class='pagenumbers']//a[@class='pagenumsblack' and contains(text(), 'Next')]"
     item_xpath =\
@@ -25,7 +26,8 @@ class ColesSpider(CrawlSpider):
     )
 
     def parse_item(self, response):
-        i = ItemLoader(item=ColesItem(), response=response)
+        # FIXME: fix array issue
+        i = ItemLoader(item=SalefinderItem(), response=response)
         title = r'//div[@id="product-details-container"]//h1/text()'
         price = r'//div[@id="product-details-container"]//span[@class="price"]/text()'
         per = r'//div[@id="product-details-container"]//span[@class="price"]/text()'
@@ -38,4 +40,15 @@ class ColesSpider(CrawlSpider):
 
         i.add_value('url', response.url)
         i.add_value('date', date.today().isoformat())
+
+        product_buy = response.xpath("//div[@class='product-container']//div[@id='product-buy']")
+        product_buy_text = product_buy.extract_first().lower()
+
+        # Detect the vendor from a product-buy div
+        if 'coles' in product_buy_text:
+            i.add_value('vendor', 'coles')
+        elif 'woolworths' in product_buy_text:
+            i.add_value('vendor', 'woolworths')
+        else:
+            i.add_value('vendor', 'unknown')
         return i.load_item()
